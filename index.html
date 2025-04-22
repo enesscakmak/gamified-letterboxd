@@ -17,13 +17,53 @@
 					/>movieboxd</a
 				>
 				<div class="search_container">
-					<form action="/search_page.html"></form>
+					<button class="search_toggle" type="button">
+						<span class="search_icon"></span>
+						<span class="search_placeholder">Search something</span>
+					</button>
 					<input
 						type="text"
 						name="search"
+						class="search_input"
 						placeholder="Search something"
+						style="display: none"
 					/>
-					<button type="submit" class="search_button"></button>
+				</div>
+				<div class="header_buttons">
+					<a href="/discover.html" id="discover_button">Discover</a>
+					<button class="add_button" id="add_button">
+						<span class="add_icon">
+							<!-- Add SVG -->
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								width="22"
+								height="25"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M11.25 12.75V18H12.75V12.75H18V11.25H12.75V6H11.25V11.25H6V12.75H11.25Z"
+									fill="#080341"
+								/>
+							</svg>
+						</span>
+						<span class="down_icon">
+							<!-- Down Arrow SVG -->
+							<svg
+								viewBox="0 0 24 24"
+								fill="#080341"
+								width="13"
+								height="15"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"
+								/>
+							</svg>
+						</span>
+					</button>
 				</div>
 			</header>
 		</div>

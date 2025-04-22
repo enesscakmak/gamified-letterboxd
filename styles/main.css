@@ -14,6 +14,9 @@ body {
 .main_logo_text {
 	text-decoration: none;
 	color: white;
+	font-size: 2em;
+	display: flex;
+	align-items: center;
 }
 
 .main_logo {
@@ -21,4 +24,95 @@ body {
 	max-height: 100px;
 	width: 50px;
 	height: 50px;
+}
+
+.search_container {
+	position: relative;
+	padding: 3vh;
+	display: flex;
+	align-items: center;
+}
+
+.search_toggle {
+	background: transparent;
+	border: 1px solid;
+	border-radius: 0.5vh;
+	cursor: pointer;
+	padding: 0 16px 0 8px;
+	height: 3vh;
+	display: flex;
+	align-items: center;
+	min-width: 180px;
+	color: black;
+	font-size: medium;
+	gap: 8px;
+}
+
+.search_placeholder {
+	color: white;
+	opacity: 0.9;
+	font-size: medium;
+	pointer-events: none;
+}
+.search_icon {
+	position: relative;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+}
+
+/* Circle of magnifying glass */
+.search_icon::before {
+	content: "";
+	position: absolute;
+	left: 0.1vh;
+	top: 0.2vh;
+	width: 1.5vh;
+	height: 1.4vh;
+	border: 2px solid black;
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+
+/* Handle of magnifying glass */
+.search_icon::after {
+	content: "";
+	position: absolute;
+	left: 1.2vh;
+	top: 1.5vh;
+	width: 0.9vh;
+	height: 0.2vh;
+	background: black;
+	border-radius: 2px;
+	transform: rotate(45deg);
+}
+
+.search_input {
+	border-radius: 5px;
+	background: transparent;
+	border: 1px solid;
+	width: 40vh;
+	height: 3vh;
+	font-size: medium;
+	/* display: none;  */
+}
+
+.add_button {
+	height: 3vh;
+	width: 7vw;
+	max-width: 100px;
+	max-height: 100px;
+	cursor: pointer;
+	background: transparent;
+	border: 1px solid;
+	border-radius: 0.6vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+}
+
+.add_icon svg,
+.down_icon svg {
+	display: block;
 }
