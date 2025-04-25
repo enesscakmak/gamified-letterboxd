@@ -6,6 +6,7 @@
 		<title>gameboxd</title>
 		<link rel="stylesheet" href="styles/main.css" />
 		<script src="scripts/main.js"></script>
+		<script type="module" src="https://unpkg.com/cally"></script>
 	</head>
 	<body>
 		<div>
@@ -236,7 +237,7 @@
 								<path
 									fill-rule="evenodd"
 									clip-rule="evenodd"
-									d="M10.1507 2.3649C10.8306 0.713558 13.1694 0.713567 13.8494 2.3649L16.1856 8.0386L21.4255 8.346"
+									d="M10.1507 2.3649C10.8306 0.713558 13.1694 0.713567 13.8494 2.3649L16.1856 8.0386L21.4255 8.34683C23.2632 8.45493 23.9912 10.7786 22.5437 11.916L18.1816 15.3433L19.9202 20.2694C20.5648 22.0955 18.497 23.6802 16.9012 22.5831L12 19.2135L7.09881 22.5831C5.50303 23.6802 3.43525 22.0955 4.07977 20.2694L5.81838 15.3433L1.45635 11.916C0.0087955 10.7787 0.736801 8.45493 2.57454 8.34683L7.81442 8.0386L10.1507 2.3649ZM12 3.1264L9.18559 9.9614L2.69199 10.3434L8.18164 14.6567L5.96575 20.935L12 16.7865L18.0343 20.935L15.8184 14.6567L21.308 10.3434L14.8144 9.9614L12 3.1264Z"
 									fill="#FFFFFF"
 								></path>
 							</svg>
@@ -320,117 +321,70 @@
 		</div>
 		<div id="add-review-window" class="window" style="display: none">
 			<div class="window-content">
-				<img
-					src="public/assets/conclave.jpg"
-					alt=""
-					class="add-review-img"
-				/>
+				<div class="add-review-img">
+					<img
+						src="public/assets/conclave.jpg"
+						alt=""
+						class="add-review-img"
+					/>
+				</div>
 				<div class="review-form-content">
-					<span class="review-name">Movie Name</span>
-					<div class="form-row">
-						<input
-							type="checkbox"
-							name="watch-date"
-							id="watch-date"
-						/>
-						<label for="watch-date">Watched this on</label>
+					<div class="show-info">
+						<span class="review-name">Movie Name</span>
+						<span class="show-year">2025</span>
+					</div>
+					<div class="watch-date">
+						<input type="checkbox" name="watched" id="watched" />
 						<button
+							id="date-picker-btn"
+							popovertarget="cally-popover1"
+							class="input input-border"
 							type="button"
-							class="date-pick"
-							data-action="date-pick"
-							id="date-pick-btn"
-						></button>
-						<input
-							type="date"
-							id="hidden-date-input"
-							style="display: none"
-						/>
+							style="anchor-name: --cally1"
+						>
+							<span id="date-picker-label"></span>
+						</button>
+						<div
+							popover="auto"
+							id="cally-popover1"
+							class="dropdown bg-base-100 rounded-box shadow-lg"
+							style="position-anchor: --cally1; margin-top: 10px"
+						>
+							<calendar-date class="cally" id="calendar-date">
+								<svg
+									aria-label="Previous"
+									class="fill-current size-4"
+									slot="previous"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+								>
+									<path
+										d="M15.75 19.5 8.25 12l7.5-7.5"
+									></path>
+								</svg>
+								<svg
+									aria-label="Next"
+									class="fill-current size-4"
+									slot="next"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+								>
+									<path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+								</svg>
+								<calendar-month></calendar-month>
+							</calendar-date>
+						</div>
 						<input
 							type="checkbox"
 							name="watch-before"
 							id="watch-before"
 						/>
-						<label for="watch-before">Watched this before</label>
 					</div>
-					<input
-						type="text"
-						name="review-text"
-						id="review-text"
-						placeholder="Write your review..."
-					/>
-					<div class="star-rating-svg" id="star-rating-svg">
-						<span class="star">
-							<span
-								class="star-half left"
-								data-value="0.5"
-								aria-label="0.5 stars"
-							></span>
-							<span
-								class="star-half right"
-								data-value="1"
-								aria-label="1 star"
-							></span>
-						</span>
-						<span class="star">
-							<span
-								class="star-half left"
-								data-value="1.5"
-								aria-label="1.5 stars"
-							></span>
-							<span
-								class="star-half right"
-								data-value="2"
-								aria-label="2 stars"
-							></span>
-						</span>
-						<span class="star">
-							<span
-								class="star-half left"
-								data-value="2.5"
-								aria-label="2.5 stars"
-							></span>
-							<span
-								class="star-half right"
-								data-value="3"
-								aria-label="3 stars"
-							></span>
-						</span>
-						<span class="star">
-							<span
-								class="star-half left"
-								data-value="3.5"
-								aria-label="3.5 stars"
-							></span>
-							<span
-								class="star-half right"
-								data-value="4"
-								aria-label="4 stars"
-							></span>
-						</span>
-						<span class="star">
-							<span
-								class="star-half left"
-								data-value="4.5"
-								aria-label="4.5 stars"
-							></span>
-							<span
-								class="star-half right"
-								data-value="5"
-								aria-label="5 stars"
-							></span>
-						</span>
-						<span
-							id="star-rating-value"
-							class="ml-2 text-yellow-500 font-bold"
-							>2.5</span
-						>
+					<div class="review-text">
+						<input type="text" name="review-content" id="" />
 					</div>
-					<input
-						type="hidden"
-						id="star-rating-input"
-						name="star-rating"
-						value="2.5"
-					/>
+					<div class="star-rating"></div>
+					<button id="close-add-review">Close</button>
 				</div>
 			</div>
 		</div>

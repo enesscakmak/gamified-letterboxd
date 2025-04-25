@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
 body {
 	padding: 0%;
 	margin: 0%;
@@ -396,159 +399,117 @@ body {
 	z-index: 1000;
 }
 .window-content {
-	display: flex; /* Side-by-side layout */
-	gap: 24px; /* Space between image and form */
-	align-items: flex-start; /* Align items to the top */
-	max-width: 1200px;
-	min-width: 800px;
-	min-height: 500px;
-	max-height: 800px;
-	margin: 0 auto;
 	background: #222;
 	color: #fff;
-	padding: 32px 24px;
+	padding: 32px;
 	border-radius: 12px;
+	min-width: 300px;
+	display: flex;
+	flex-direction: row; /* Image left, content right */
+	gap: 32px;
+	align-items: flex-start;
 }
 
-.form-row {
+.add-review-img {
+	width: 120px;
+	height: 160px;
 	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+.add-review-img img {
+	width: 120px;
+	height: 160px;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.review-form-content {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	width: 320px;
+}
+
+.show-info {
+	display: flex;
+	flex-direction: row;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 0;
+}
+
+.watch-date {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 0;
+}
+
+.review-text {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.review-text input[type="text"] {
+	width: 100%;
+	padding: 6px 8px;
+	border-radius: 4px;
+	border: 1px solid #444;
+	background: #181818;
+	color: #fff;
+}
+
+.star-rating {
+	display: flex;
+	flex-direction: row;
 	align-items: center;
 	gap: 8px;
 }
 
-.window-content input[type="text"] {
-	flex: 1;
-	padding: 8px;
-	border-radius: 6px;
-	border: 1px solid #424242;
-	background: #181818;
+#cally-popover1 {
+	background: #23252a !important;
+	color: #fff !important;
+	border-radius: 12px !important;
+	padding: 0 !important;
+	border: none !important;
+	min-width: 140px;
+	max-width: 260px;
+	max-height: 320px;
+}
+
+calendar-date.cally {
+	--cally-day-size: 28px; /* Size of each day cell */
+	--cally-day-font-size: 0.85em; /* Font size for day numbers */
+	--cally-header-font-size: 1em; /* Font size for year/month */
+	--cally-month-font-size: 1em;
+	--cally-weekday-font-size: 0.8em;
+	--cally-padding: 8px; /* Padding around calendar */
+	--cally-gap: 2px; /* Gap between day cells */
+	font-size: 0.85em; /* Base font size */
+	min-width: 180px;
+	max-width: 200px;
+}
+
+calendar-date.cally [slot="previous"],
+calendar-date.cally [slot="next"] {
 	color: #fff;
-	min-width: 200px;
-	min-height: 160px;
 }
 
-.window-content input[type="button"],
-.window-content button {
-	margin-top: 8px;
-	padding: 8px 16px;
-	border-radius: 6px;
-	border: none;
-	background: #444;
-	color: #fff;
-	cursor: pointer;
-	transition: background 0.2s;
+calendar-date.cally .cally__day--selected {
+	background: #7c6ee6 !important;
+	color: #fff !important;
+	border-radius: 8px !important;
 }
 
-.window-content input[type="button"]:hover,
-.window-content button:hover {
-	background: #666;
+calendar-date.cally .cally__day:hover {
+	background: #35363a !important;
 }
 
-.add-review-img {
-	display: flex;
-	width: 120px;
-	height: 160px;
-}
-
-.review-name {
-	align-items: flex-start;
-	font-size: 16px;
-	font-weight: large;
-}
-
-/* Star rating taken from https://dev.to/alvaromontoro/single-html-element-star-rating-component-205l */
-.star-rating {
-	--star-size: 32px;
-	--star-color: #ffd700;
-	--star-background: #444;
-	--star-spacing: 1px;
-	--star-count: 5;
-	--value: calc(var(--val, 2.5) / 5);
-
-	appearance: none;
-	width: calc(
-		var(--star-size) * var(--star-count) + var(--star-spacing) *
-			(var(--star-count) - 1)
-	);
-	height: var(--star-size);
-	background: linear-gradient(
-		to right,
-		var(--star-color) 0%,
-		var(--star-color) calc(var(--value) * 100%),
-		var(--star-background) calc(var(--value) * 100%),
-		var(--star-background) 100%
-	);
-	-webkit-mask: repeat-x
-		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><polygon points="12,2 15,9 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,9"/></svg>')
-		left center / var(--star-size) var(--star-size);
-	mask: repeat-x
-		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><polygon points="12,2 15,9 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,9"/></svg>')
-		left center / var(--star-size) var(--star-size);
-	border: none;
-	outline: none;
-	cursor: pointer;
-	pointer-events: auto;
-}
-
-.star-rating::-webkit-slider-thumb {
-	pointer-events: auto;
-}
-
-.star-rating::-moz-range-thumb {
-	pointer-events: auto;
-}
-
-.star-rating::-ms-thumb {
-	pointer-events: auto;
-}
-
-.star-rating-svg {
-	display: inline-flex;
-	align-items: center;
-	user-select: none;
-	gap: 0.1em;
-}
-
-.star {
-	position: relative;
-	display: inline-block;
-	width: 24px;
-	height: 24px;
-}
-
-.star-half {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 24px;
-	height: 24px;
-	cursor: pointer;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	transition: filter 0.15s;
-	z-index: 2; /* <-- Make both halves clickable */
-	pointer-events: auto;
-}
-
-.star-half.filled.left {
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
-}
-.star-half.filled.right {
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-1,0,0,1,0,0)"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
-}
-
-.star-half.left {
-	z-index: 2;
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
-}
-
-.star-half.right {
-	z-index: 1;
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-1,0,0,1,0,0)"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
-}
-
-.star-half.filled {
-	filter: drop-shadow(0 0 2px gold) brightness(1.5) sepia(1)
-		hue-rotate(-30deg) saturate(5);
+calendar-date.cally .cally__header,
+calendar-date.cally .cally__month {
+	background: transparent !important;
+	color: #fff !important;
 }
