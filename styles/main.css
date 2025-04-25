@@ -1,6 +1,8 @@
 body {
 	padding: 0%;
 	margin: 0%;
+	background-color: #14181c;
+	color: white;
 }
 
 .header-navbar {
@@ -190,9 +192,11 @@ body {
 .popular-cards {
 	display: flex;
 	flex-wrap: nowrap;
-	border: 1px solid black;
+	border: 1px solid rgba(255, 255, 255, 0.301);
+	border-left: 0;
+	border-right: 0;
 	width: 500px;
-	height: 150px;
+	height: 140px;
 	/* margin: 10px; */
 	padding: 10px;
 	align-items: flex-start;
