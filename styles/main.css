@@ -396,15 +396,56 @@ body {
 	z-index: 1000;
 }
 .window-content {
+	display: flex; /* Side-by-side layout */
+	gap: 24px; /* Space between image and form */
+	align-items: flex-start; /* Align items to the top */
+	max-width: 1200px;
+	min-width: 800px;
+	min-height: 500px;
+	max-height: 800px;
+	margin: 0 auto;
 	background: #222;
 	color: #fff;
-	padding: 32px;
+	padding: 32px 24px;
 	border-radius: 12px;
-	min-width: 300px;
+}
+
+.form-row {
 	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.window-content input[type="text"] {
+	flex: 1;
+	padding: 8px;
+	border-radius: 6px;
+	border: 1px solid #424242;
+	background: #181818;
+	color: #fff;
+	min-width: 200px;
+	min-height: 160px;
+}
+
+.window-content input[type="button"],
+.window-content button {
+	margin-top: 8px;
+	padding: 8px 16px;
+	border-radius: 6px;
+	border: none;
+	background: #444;
+	color: #fff;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.window-content input[type="button"]:hover,
+.window-content button:hover {
+	background: #666;
 }
 
 .add-review-img {
+	display: flex;
 	width: 120px;
 	height: 160px;
 }
@@ -413,4 +454,101 @@ body {
 	align-items: flex-start;
 	font-size: 16px;
 	font-weight: large;
+}
+
+/* Star rating taken from https://dev.to/alvaromontoro/single-html-element-star-rating-component-205l */
+.star-rating {
+	--star-size: 32px;
+	--star-color: #ffd700;
+	--star-background: #444;
+	--star-spacing: 1px;
+	--star-count: 5;
+	--value: calc(var(--val, 2.5) / 5);
+
+	appearance: none;
+	width: calc(
+		var(--star-size) * var(--star-count) + var(--star-spacing) *
+			(var(--star-count) - 1)
+	);
+	height: var(--star-size);
+	background: linear-gradient(
+		to right,
+		var(--star-color) 0%,
+		var(--star-color) calc(var(--value) * 100%),
+		var(--star-background) calc(var(--value) * 100%),
+		var(--star-background) 100%
+	);
+	-webkit-mask: repeat-x
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><polygon points="12,2 15,9 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,9"/></svg>')
+		left center / var(--star-size) var(--star-size);
+	mask: repeat-x
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><polygon points="12,2 15,9 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,9"/></svg>')
+		left center / var(--star-size) var(--star-size);
+	border: none;
+	outline: none;
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.star-rating::-webkit-slider-thumb {
+	pointer-events: auto;
+}
+
+.star-rating::-moz-range-thumb {
+	pointer-events: auto;
+}
+
+.star-rating::-ms-thumb {
+	pointer-events: auto;
+}
+
+.star-rating-svg {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+	gap: 0.1em;
+}
+
+.star {
+	position: relative;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+}
+
+.star-half {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	transition: filter 0.15s;
+	z-index: 2; /* <-- Make both halves clickable */
+	pointer-events: auto;
+}
+
+.star-half.filled.left {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
+}
+.star-half.filled.right {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-1,0,0,1,0,0)"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
+}
+
+.star-half.left {
+	z-index: 2;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
+}
+
+.star-half.right {
+	z-index: 1;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-1,0,0,1,0,0)"><path d="M12 17.8L5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>');
+}
+
+.star-half.filled {
+	filter: drop-shadow(0 0 2px gold) brightness(1.5) sepia(1)
+		hue-rotate(-30deg) saturate(5);
 }
