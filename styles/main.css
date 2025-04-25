@@ -126,6 +126,7 @@ body {
 	margin-right: 1vw;
 	min-width: 0;
 	justify-content: space-between;
+	position: relative;
 }
 
 .header-spacer {
@@ -179,7 +180,7 @@ body {
 }
 
 .popular-reviews {
-	margin: 10px;
+	margin: 30px 60px;
 }
 
 .popular-reviews span,
@@ -332,4 +333,84 @@ body {
 	max-height: 160px;
 	width: 120px;
 	height: 160px;
+}
+
+.add-dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: #202020;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	min-width: 100px;
+	max-width: 200px;
+	padding: 10px 8px;
+	box-shadow: 0 4px 16px rgba(52, 52, 52, 0.25);
+	z-index: 100;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.add-dropdown ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.add-dropdown li {
+	margin: 0;
+	padding: 0;
+}
+
+.dropdown-btn {
+	width: 100%;
+	padding: 8px;
+	background: #202020;
+	color: #fff;
+	border: none;
+	border-radius: 6px;
+	font-size: 0.8em;
+	cursor: pointer;
+	transition: background 0.1s, color 0.2s;
+	text-align: left;
+}
+
+.dropdown-btn:hover {
+	background: #3a3a3a;
+}
+
+.window {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+.window-content {
+	background: #222;
+	color: #fff;
+	padding: 32px;
+	border-radius: 12px;
+	min-width: 300px;
+	display: flex;
+}
+
+.add-review-img {
+	width: 120px;
+	height: 160px;
+}
+
+.review-name {
+	align-items: flex-start;
+	font-size: 16px;
+	font-weight: large;
 }
