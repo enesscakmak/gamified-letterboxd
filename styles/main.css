@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @plugin "daisyui";
 
 body {
@@ -14,14 +17,14 @@ body {
 	background-color: rgb(162, 139, 212);
 	padding: 0 1vw;
 	gap: 1vw;
-	flex-wrap: wrap; /* Allow wrapping on small screens */
+	flex-wrap: wrap;
 }
 
 #header-burger {
 	display: flex;
 	align-content: center;
 	background: transparent;
-	border: 1px solid;
+	border: 1px solid #222;
 	align-items: center;
 	cursor: pointer;
 	border-radius: 5px;
@@ -106,7 +109,7 @@ body {
 	width: 50px;
 	cursor: pointer;
 	background: transparent;
-	border: 1px solid;
+	border: 1px solid #222;
 	border-radius: 0.6vh;
 	display: flex;
 	align-items: center;
