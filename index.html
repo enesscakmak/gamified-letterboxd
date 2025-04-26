@@ -319,72 +319,160 @@
 				/>
 			</div>
 		</div>
+
 		<div id="add-review-window" class="window" style="display: none">
 			<div class="window-content">
-				<div class="add-review-img">
-					<img
-						src="public/assets/conclave.jpg"
-						alt=""
-						class="add-review-img"
-					/>
+				<!-- Modal Header -->
+				<div class="window-header">
+					<button
+						id="close-add-review"
+						class="modal-close-btn"
+						aria-label="Cancel"
+					>
+						&times;
+					</button>
+					<button id="back-add-review" class="modal-back-btn">
+						Back
+					</button>
 				</div>
-				<div class="review-form-content">
-					<div class="show-info">
-						<span class="review-name">Movie Name</span>
-						<span class="show-year">2025</span>
-					</div>
-					<div class="watch-date">
-						<input type="checkbox" name="watched" id="watched" />
-						<button
-							id="date-picker-btn"
-							popovertarget="cally-popover1"
-							class="input input-border"
-							type="button"
-							style="anchor-name: --cally1"
-						>
-							<span id="date-picker-label"></span>
-						</button>
-						<div
-							popover="auto"
-							id="cally-popover1"
-							class="dropdown bg-base-100 rounded-box shadow-lg"
-							style="position-anchor: --cally1; margin-top: 10px"
-						>
-							<calendar-date class="cally" id="calendar-date">
-								<svg
-									aria-label="Previous"
-									class="fill-current size-4"
-									slot="previous"
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 24 24"
-								>
-									<path
-										d="M15.75 19.5 8.25 12l7.5-7.5"
-									></path>
-								</svg>
-								<svg
-									aria-label="Next"
-									class="fill-current size-4"
-									slot="next"
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 24 24"
-								>
-									<path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-								</svg>
-								<calendar-month></calendar-month>
-							</calendar-date>
-						</div>
-						<input
-							type="checkbox"
-							name="watch-before"
-							id="watch-before"
+
+				<!-- Modal Body -->
+				<div class="window-body">
+					<div class="add-review-img">
+						<img
+							src="public/assets/conclave.jpg"
+							alt="Movie Poster"
 						/>
 					</div>
-					<div class="review-text">
-						<input type="text" name="review-content" id="" />
+					<div class="review-form-content">
+						<div class="show-info">
+							<span class="review-name">Movie Name</span>
+							<span class="show-year">2025</span>
+						</div>
+						<div class="watch-date">
+							<input
+								type="checkbox"
+								name="watched"
+								id="watched"
+							/>
+							<span class="watch-date-span">Watched this on</span>
+							<button
+								id="date-picker-btn"
+								popovertarget="cally-popover1"
+								class="date-picker-btn"
+								type="button"
+								style="anchor-name: --cally1"
+							>
+								<span id="date-picker-label"></span>
+							</button>
+							<div
+								id="cally-popover1"
+								class="dropdown bg-base-100 rounded-box shadow-lg"
+								style="
+									display: none;
+									position: absolute;
+									z-index: 2000;
+								"
+							>
+								<calendar-date class="cally" id="calendar-date">
+									<!-- svg arrows -->
+								</calendar-date>
+							</div>
+							<input
+								type="checkbox"
+								name="watch-before"
+								id="watch-before"
+								style="margin-left: 60px"
+							/>
+							<span class="watch-date-span"
+								>Watched this before</span
+							>
+						</div>
+						<div class="review-text">
+							<textarea
+								class="review-textarea"
+								placeholder="Write your review..."
+							></textarea>
+						</div>
+						<div class="rating rating-lg rating-half">
+							<input
+								type="radio"
+								name="rating-11"
+								class="rating-hidden"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-1 bg-green-500"
+								aria-label="0.5 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-2 bg-green-500"
+								aria-label="1 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-1 bg-green-500"
+								aria-label="1.5 star"
+								checked="checked"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-2 bg-green-500"
+								aria-label="2 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-1 bg-green-500"
+								aria-label="2.5 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-2 bg-green-500"
+								aria-label="3 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-1 bg-green-500"
+								aria-label="3.5 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-2 bg-green-500"
+								aria-label="4 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-1 bg-green-500"
+								aria-label="4.5 star"
+							/>
+							<input
+								type="radio"
+								name="rating-11"
+								class="mask mask-star-2 mask-half-2 bg-green-500"
+								aria-label="5 star"
+							/>
+						</div>
 					</div>
-					<div class="star-rating"></div>
-					<button id="close-add-review">Close</button>
+				</div>
+
+				<!-- Modal Footer -->
+				<div class="window-footer">
+					<button
+						id="save-review-footer-btn"
+						class="save-review-footer-btn"
+					>
+						Save
+					</button>
 				</div>
 			</div>
 		</div>

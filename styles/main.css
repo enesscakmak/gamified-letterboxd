@@ -398,28 +398,76 @@ body {
 	justify-content: center;
 	z-index: 1000;
 }
+
 .window-content {
 	background: #222;
 	color: #fff;
-	padding: 32px;
+	padding: 24px;
+	padding-bottom: 0px;
 	border-radius: 12px;
-	min-width: 300px;
+	width: 120vw;
+	max-width: 700px;
+	min-width: 0;
+	min-height: 400px;
 	display: flex;
-	flex-direction: row; /* Image left, content right */
-	gap: 32px;
-	align-items: flex-start;
+	flex-direction: column;
+	gap: 24px;
+	align-items: stretch;
+	box-sizing: border-box;
+}
+
+.window-header,
+.window-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.window-body {
+	display: flex;
+	flex-direction: row;
+	gap: 24px;
+	width: 100%;
+}
+
+.window-footer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: calc(100% + 48px);
+	margin-left: -24px;
+	margin-right: -24px;
+	background-color: #1b1b1b;
+	box-sizing: border-box;
+	padding: 16px;
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+	box-sizing: border-box;
+}
+
+/* Responsive for modal body */
+@media (max-width: 600px) {
+	.window-body {
+		flex-direction: column;
+		align-items: center;
+	}
 }
 
 .add-review-img {
 	width: 120px;
-	height: 160px;
+	max-width: 50vw;
+	height: auto;
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
 }
+
 .add-review-img img {
-	width: 120px;
-	height: 160px;
+	width: 100%;
+	max-width: 160px;
+	min-width: 120px;
+	height: auto;
 	object-fit: cover;
 	border-radius: 8px;
 }
@@ -428,10 +476,31 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	width: 320px;
+	width: 100%;
+	max-width: 600px;
+	min-width: 0;
+}
+
+@media (max-width: 600px) {
+	.window-content {
+		flex-direction: column;
+		align-items: center;
+		padding: 12px;
+		max-width: 120vw;
+	}
+	.add-review-img {
+		width: 50vw;
+		max-width: 200px;
+		margin-bottom: 12px;
+	}
+	.review-form-content {
+		max-width: 100%;
+	}
 }
 
 .show-info {
+	font-size: large;
+	font-weight: bold;
 	display: flex;
 	flex-direction: row;
 	gap: 12px;
@@ -443,8 +512,45 @@ body {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 12px;
 	margin-bottom: 0;
+}
+
+.watch-date-span {
+	font-size: 14px;
+}
+
+.watch-date input[type="checkbox"] {
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: #23252a;
+	border: 2px solid #444;
+	width: 18px;
+	height: 18px;
+	border-radius: 6px;
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	transition: background 0.2s, border-color 0.2s;
+	margin: 0 6px 0 0;
+	vertical-align: middle;
+}
+
+.watch-date input[type="checkbox"]:hover {
+	border-color: #7048e8;
+	background-color: #292a2f;
+}
+
+.watch-date input[type="checkbox"]:checked::after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 5px;
+	top: 1px;
+	width: 4px;
+	height: 9px;
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
 }
 
 .review-text {
@@ -453,13 +559,19 @@ body {
 	align-items: center;
 }
 
-.review-text input[type="text"] {
+.review-textarea {
 	width: 100%;
+	min-height: 200px;
+	max-height: 400px; /* limit the growth */
 	padding: 6px 8px;
 	border-radius: 4px;
 	border: 1px solid #444;
 	background: #181818;
 	color: #fff;
+	box-sizing: border-box;
+	resize: none; /* user can't manually resize */
+	overflow-y: auto; /* show scrollbar if needed */
+	transition: height 0.2s ease;
 }
 
 .star-rating {
@@ -467,6 +579,18 @@ body {
 	flex-direction: row;
 	align-items: center;
 	gap: 8px;
+	justify-content: center;
+	margin-top: 16px;
+}
+
+.date-picker-btn {
+	background: #131313;
+	border: 0.1px solid #3a3a3a;
+	color: #e6e6e6;
+	border-radius: 6px;
+	width: 6rem;
+	height: 1.5rem;
+	margin: 0 5px;
 }
 
 #cally-popover1 {
@@ -475,41 +599,82 @@ body {
 	border-radius: 12px !important;
 	padding: 0 !important;
 	border: none !important;
-	min-width: 140px;
-	max-width: 260px;
-	max-height: 320px;
+	min-width: 0;
+	max-width: 300px;
+	max-height: 250px;
+	font-size: small;
 }
 
-calendar-date.cally {
-	--cally-day-size: 28px; /* Size of each day cell */
-	--cally-day-font-size: 0.85em; /* Font size for day numbers */
-	--cally-header-font-size: 1em; /* Font size for year/month */
-	--cally-month-font-size: 1em;
-	--cally-weekday-font-size: 0.8em;
-	--cally-padding: 8px; /* Padding around calendar */
-	--cally-gap: 2px; /* Gap between day cells */
-	font-size: 0.85em; /* Base font size */
-	min-width: 180px;
-	max-width: 200px;
-}
-
-calendar-date.cally [slot="previous"],
-calendar-date.cally [slot="next"] {
+#calendar-date {
+	background: #23252a;
 	color: #fff;
+	border-radius: 12px;
+	padding: 5px;
+	max-width: 300px;
 }
 
-calendar-date.cally .cally__day--selected {
-	background: #7c6ee6 !important;
-	color: #fff !important;
-	border-radius: 8px !important;
+/* Day buttons */
+calendar-date::part(button) {
+	width: 20px;
+	height: 20px;
+	border-radius: 6px;
+	background: #2e2f34;
+	border: 1px solid #4a4a4a;
+	color: white;
 }
 
-calendar-date.cally .cally__day:hover {
-	background: #35363a !important;
+/* When focused */
+calendar-date::part(button):focus-visible {
+	outline: 2px solid #7048e8;
 }
 
-calendar-date.cally .cally__header,
-calendar-date.cally .cally__month {
-	background: transparent !important;
-	color: #fff !important;
+/* Month component colors */
+calendar-month {
+	--color-accent: #7048e8;
+	--color-text-on-accent: #ffffff;
+}
+
+calendar-month::part(button) {
+	block-size: 25px;
+	inline-size: 25px;
+	border: 1px solid rgba(0, 0, 0, 0.193);
+	border-radius: 6px;
+}
+
+/* SVG icons */
+calendar-date svg {
+	width: 20px;
+	height: 20px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.5;
+}
+
+.modal-close-btn {
+	background: transparent;
+	border: none;
+	color: #fff;
+	font-size: 1.5rem;
+	cursor: pointer;
+	margin-right: 8px;
+}
+
+.modal-back-btn {
+	background: #23252a;
+	border: 1px solid #444;
+	color: #fff;
+	border-radius: 6px;
+	padding: 4px 12px;
+	cursor: pointer;
+	font-size: 0.9rem;
+}
+
+.save-review-footer-btn {
+	background: #33aa59;
+	border: 1px solid #444;
+	color: #fff;
+	border-radius: 6px;
+	padding: 4px 12px;
+	cursor: pointer;
+	font-size: 0.9rem;
 }
