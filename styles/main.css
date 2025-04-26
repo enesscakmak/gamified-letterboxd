@@ -586,6 +586,50 @@ body {
 	margin-top: 16px;
 }
 
+.rating-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.rating {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.add-favorite {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s ease, fill 0.3s ease;
+}
+
+.add-favorite:active {
+	transform: scale(0.9); /* Add a slight "press" effect */
+}
+
+.bookmark-buttons .fav-icon.active .favorite-icon {
+	fill: #ff0000; /* Change to red when active */
+	stroke: #ff0000; /* Match the stroke color */
+}
+
+.favorite-icon {
+	width: 24px;
+	height: 24px;
+	stroke: #fff;
+	fill: none;
+	transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.add-favorite.active .favorite-icon {
+	fill: #ff0000; /* Change to red when active */
+	stroke: #ff0000; /* Match the stroke color */
+}
+
 .date-picker-btn {
 	background: #131313;
 	border: 0.1px solid #3a3a3a;
@@ -680,4 +724,79 @@ calendar-date svg {
 	padding: 4px 12px;
 	cursor: pointer;
 	font-size: 0.9rem;
+}
+
+.save-icon {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s ease;
+}
+
+.save-icon:active {
+	transform: scale(0.9);
+}
+
+.save-icon.active .size-6 {
+	stroke: #e9e21a;
+	fill: #e9e21a;
+}
+
+.size-6 {
+	width: 24px;
+	height: 24px;
+	stroke: #fff;
+	fill: none;
+	transition: stroke 0.3s ease;
+}
+
+.star-icon {
+	width: 24px;
+	height: 24px;
+	stroke: #fff; /* Default stroke color */
+	fill: none; /* Default fill color */
+	cursor: pointer; /* Make it clickable */
+	transition: stroke 0.3s ease, fill 0.3s ease; /* Smooth transitions */
+}
+
+.star-icon:hover {
+	stroke: #ffb700; /* Change stroke color on hover */
+	fill: #ffb700; /* Optional: Add fill color on hover */
+}
+
+/* Ensure the active state takes precedence over hover */
+.star-icon-btn.active .star-icon {
+	stroke: #ffb700 !important; /* Change stroke color to yellow when active */
+	fill: #ffb700 !important; /* Add fill color when active */
+}
+
+.star-icon-btn.active:hover .star-icon {
+	stroke: #ffb700; /* Keep the active color on hover */
+	fill: #ffb700; /* Keep the active fill on hover */
+}
+
+.comment-icon-btn {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0; /* Remove default button padding */
+	transition: transform 0.2s ease;
+}
+
+.comment-icon-btn:active {
+	transform: scale(0.9); /* Add a slight "press" effect */
+}
+
+.comment-icon {
+	width: 24px;
+	height: 24px;
+	stroke: #fff; /* Default stroke color */
+	fill: none; /* Default fill color */
+	transition: stroke 0.3s ease, fill 0.3s ease; /* Smooth transitions */
 }

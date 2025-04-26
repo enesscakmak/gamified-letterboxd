@@ -1,5 +1,3 @@
-// import "cally";
-
 document.addEventListener("DOMContentLoaded", function () {
 	// Search input toggle
 	const toggle = document.querySelector(".search_toggle");
@@ -22,6 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	const addReviewWindow = document.getElementById("add-review-window");
 	const closeAddReview = document.getElementById("close-add-review");
 	const textareas = document.querySelectorAll(".review-textarea");
+	const favoriteButton = document.getElementById("add-favorite-btn");
+	const favIconButtons = document.querySelectorAll(".fav-icon");
+	const saveIconButton = document.querySelector(".save-icon");
+	const starIconButtons = document.querySelectorAll(".star-icon-btn");
+	const commentIconButtons = document.querySelectorAll(".comment-icon-btn");
 
 	addButton.addEventListener("click", function (e) {
 		e.stopPropagation();
@@ -42,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	document.addEventListener("click", function () {
 		dropdown.style.display = "none";
-		addReviewModal.style.display = "none";
+		addReviewWindow.style.display = "none";
 	});
 
 	if (closeAddReview) {
@@ -56,6 +59,29 @@ document.addEventListener("DOMContentLoaded", function () {
 		textarea.addEventListener("input", function () {
 			this.style.height = "auto";
 			this.style.height = this.scrollHeight + "px";
+		});
+	});
+
+	favoriteButton.addEventListener("click", function () {
+		// Toggle the "active" class
+		favoriteButton.classList.toggle("active");
+	});
+
+	favIconButtons.forEach((button) => {
+		button.addEventListener("click", function () {
+			// Toggle the "active" class
+			button.classList.toggle("active");
+		});
+	});
+
+	saveIconButton.addEventListener("click", function () {
+		// Toggle the "active" class
+		saveIconButton.classList.toggle("active");
+	});
+
+	starIconButtons.forEach((button) => {
+		button.addEventListener("click", function () {
+			button.classList.toggle("active");
 		});
 	});
 });
