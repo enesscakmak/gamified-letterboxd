@@ -22,14 +22,20 @@ body {
 
 #header-burger {
 	display: flex;
-	align-content: center;
+	align-items: center;
+	justify-content: center;
 	background: transparent;
 	border: 1px solid #222;
-	align-items: center;
-	cursor: pointer;
 	border-radius: 5px;
 	width: 30px;
 	height: 30px;
+	cursor: pointer;
+}
+
+#header-burger svg {
+	stroke: #222;
+	width: 20px;
+	height: 20px;
 }
 
 .main-logo-text {
@@ -203,8 +209,7 @@ body {
 	border-left: 0;
 	border-right: 0;
 	width: 500px;
-	height: 140px;
-	/* margin: 10px; */
+	height: 160px;
 	padding: 10px;
 	align-items: flex-start;
 	overflow: hidden;
@@ -449,7 +454,6 @@ body {
 	box-sizing: border-box;
 }
 
-/* Responsive for modal body */
 @media (max-width: 600px) {
 	.window-body {
 		flex-direction: column;
@@ -565,15 +569,15 @@ body {
 .review-textarea {
 	width: 100%;
 	min-height: 200px;
-	max-height: 400px; /* limit the growth */
+	max-height: 400px;
 	padding: 6px 8px;
 	border-radius: 4px;
 	border: 1px solid #444;
 	background: #181818;
 	color: #fff;
 	box-sizing: border-box;
-	resize: none; /* user can't manually resize */
-	overflow-y: auto; /* show scrollbar if needed */
+	resize: none;
+	overflow-y: auto;
 	transition: height 0.2s ease;
 }
 
@@ -609,12 +613,12 @@ body {
 }
 
 .add-favorite:active {
-	transform: scale(0.9); /* Add a slight "press" effect */
+	transform: scale(0.9);
 }
 
 .bookmark-buttons .fav-icon.active .favorite-icon {
-	fill: #ff0000; /* Change to red when active */
-	stroke: #ff0000; /* Match the stroke color */
+	fill: #ff0000;
+	stroke: #ff0000;
 }
 
 .favorite-icon {
@@ -626,8 +630,8 @@ body {
 }
 
 .add-favorite.active .favorite-icon {
-	fill: #ff0000; /* Change to red when active */
-	stroke: #ff0000; /* Match the stroke color */
+	fill: #ff0000;
+	stroke: #ff0000;
 }
 
 .date-picker-btn {
@@ -688,7 +692,6 @@ calendar-month::part(button) {
 	border-radius: 6px;
 }
 
-/* SVG icons */
 calendar-date svg {
 	width: 20px;
 	height: 20px;
@@ -756,26 +759,25 @@ calendar-date svg {
 .star-icon {
 	width: 24px;
 	height: 24px;
-	stroke: #fff; /* Default stroke color */
-	fill: none; /* Default fill color */
-	cursor: pointer; /* Make it clickable */
-	transition: stroke 0.3s ease, fill 0.3s ease; /* Smooth transitions */
+	stroke: #fff;
+	fill: none;
+	cursor: pointer;
+	transition: stroke 0.3s ease, fill 0.3s ease;
 }
 
 .star-icon:hover {
-	stroke: #ffb700; /* Change stroke color on hover */
-	fill: #ffb700; /* Optional: Add fill color on hover */
+	stroke: #ffb700;
+	fill: #ffb700;
 }
 
-/* Ensure the active state takes precedence over hover */
 .star-icon-btn.active .star-icon {
-	stroke: #ffb700 !important; /* Change stroke color to yellow when active */
-	fill: #ffb700 !important; /* Add fill color when active */
+	stroke: #ffb700 !important;
+	fill: #ffb700 !important;
 }
 
 .star-icon-btn.active:hover .star-icon {
-	stroke: #ffb700; /* Keep the active color on hover */
-	fill: #ffb700; /* Keep the active fill on hover */
+	stroke: #ffb700;
+	fill: #ffb700;
 }
 
 .comment-icon-btn {
@@ -785,18 +787,18 @@ calendar-date svg {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0; /* Remove default button padding */
+	padding: 0;
 	transition: transform 0.2s ease;
 }
 
 .comment-icon-btn:active {
-	transform: scale(0.9); /* Add a slight "press" effect */
+	transform: scale(0.9);
 }
 
 .comment-icon {
 	width: 24px;
 	height: 24px;
-	stroke: #fff; /* Default stroke color */
-	fill: none; /* Default fill color */
-	transition: stroke 0.3s ease, fill 0.3s ease; /* Smooth transitions */
+	stroke: #fff;
+	fill: none;
+	transition: stroke 0.3s ease, fill 0.3s ease;
 }
